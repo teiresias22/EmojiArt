@@ -5,7 +5,7 @@
 //  Created by Joonhwan Jeon on 2022/04/25.
 //
 
-import Foundation
+import SwiftUI
 
 class EmojiArtDocument: ObservableObject {
     @Published private(set) var emojiArt: EmojiArtModel
@@ -37,10 +37,8 @@ class EmojiArtDocument: ObservableObject {
     }
     
     func scaleEmoji(_ emoji: EmojiArtModel.Emoji, by scale: CGFloat) {
-        if let index = emojiArt,emojis.index(matching: emoji) {
-            emojiArt.emojis[index].size.index(matching: emoji) {
-                emojiArt.emojis[index].size = Int((CGFloat(emojiArt.emojis[index].size) * scale).rounded(.toNearestOrAwayFromZero))
-            }
+        if let index = emojiArt.emojis.index(matching: emoji) {
+            emojiArt.emojis[index].size = Int((CGFloat(emojiArt.emojis[index].size) * scale).rounded(.toNearestOrAwayFromZero))
         }
     }
 }
